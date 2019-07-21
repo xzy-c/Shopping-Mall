@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ssmzhenghe"
+  id="myeclipse.1563464065979"
+  context-root="/ssmzhenghe"
+  j2ee-spec="5.0"
+  archive="ssmzhenghe.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
