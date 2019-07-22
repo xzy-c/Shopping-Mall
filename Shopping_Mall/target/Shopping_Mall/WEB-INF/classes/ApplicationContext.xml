@@ -72,7 +72,7 @@
 <!-- 用spring容器管理SqLSessionFacotry -->
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   <property name="dataSource" ref="dataSource" />
-  <property name="mapperLocations" value="classpath*:com/xzy/dao/**/*.xml" />
+  <property name="mapperLocations" value="classpath:mappers/*Mapper.xml" />
   
   <property name="configuration">
     <bean class="org.apache.ibatis.session.Configuration">

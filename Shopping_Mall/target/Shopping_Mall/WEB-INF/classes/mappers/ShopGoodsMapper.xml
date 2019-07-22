@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.ShopGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.xzy.pojo.ShopGoods">
+    <constructor>
+      <arg column="shopGoods_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="goods_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stock" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="volume" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.xzy.pojo.ShopGoods">
+    insert into shopGoods_Form (shopGoods_Id, shop_Id, goods_Id, 
+      stock, volume)
+    values (#{shopgoodsId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{stock,jdbcType=INTEGER}, #{volume,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzy.pojo.ShopGoods">
+    insert into shopGoods_Form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopgoodsId != null">
+        shopGoods_Id,
+      </if>
+      <if test="shopId != null">
+        shop_Id,
+      </if>
+      <if test="goodsId != null">
+        goods_Id,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="volume != null">
+        volume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopgoodsId != null">
+        #{shopgoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null">
+        #{volume,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
