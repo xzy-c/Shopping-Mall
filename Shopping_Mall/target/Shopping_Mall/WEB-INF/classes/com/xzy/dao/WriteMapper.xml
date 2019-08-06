@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.WriteMapper">
+    <insert id="write" parameterType="com.xzy.pojo.Seeds">
+        insert into seeds(title,description) values
+        (#{title},#{description});
+    </insert>
+    <insert id="writeUserId" parameterType="int">
+        insert into seeds(user_Id)values (#{user_Id});
+    </insert>
+    <update id="updateLikes" parameterType="int">
+        update seeds set likes=likes+1 where seeds_Id=#{seeds_Id};
+    </update>
+    <update id="updatecollections" parameterType="int">
+        update seeds set collections where seeds_Id=#{seeds_Id};
+    </update>
+    <!--从session获取图片
+    插入图片到轮播图没写
+    -->
+    <!--方法有问题无法获取图片-->
+    <insert id="writeCover" parameterType="String">
+        insert into seeds(cover) values (#{cover});
+    </insert>
+    <update id="writeMTime" parameterType="Date">
+        insert into seeds(releasetime) values (#{releasetime});
+    </update>
+</mapper>

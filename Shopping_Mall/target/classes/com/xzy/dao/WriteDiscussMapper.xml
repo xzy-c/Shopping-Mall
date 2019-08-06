@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.WriteDiscussMapper">
+    <insert id="writeDiscuss" parameterType="com.xzy.pojo.Seeds_Discuss" keyProperty="seeds_DiscussId" useGeneratedKeys="true">
+        insert into seeds_discuss (comment,likes) value (#{comment},0);
+    </insert>
+    <update id="updateLikes" parameterType="int">
+        update seeds_discuss set likes=likes+1 where seeds_DiscussId=#{seeds_DisucssId};
+    </update>
+    <update id="writeTime" >
+        update seeds_discuss set time=#{time} where seeds_DiscussId=#{seeds_DiscussId};
+    </update>
+    <update id="writeUserId">
+        update seeds_discuss set user_Id=#{user_Id} where seeds_DiscussId=#{seeds_DiscussId};
+    </update>
+    <update id="writeSeedsId">
+        update seeds_discuss set seeds_Id=#{seeds_Id} where seeds_DiscussId=#{seeds_DiscussId};
+    </update>
+    <insert id="writeMutualDiscuss" parameterType="com.xzy.pojo.Seeds_MutualDiscuss" keyProperty="seeds_MutualDiscussId" useGeneratedKeys="true">
+        insert into seeds_mutualdiscuss (comment,likes) values (#{comment},0);
+    </insert>
+    <insert id="updateMLikes" parameterType="int">
+        update seeds_mutualdiscuss set likes=likes+1 where seeds_MutualDiscussId=#{seeds_MutualDiscussId};
+    </insert>
+    <update id="writeMTime">
+        update seeds_mutualdiscuss set time=#{time} where seeds_MutualDiscussId=#{seeds_MutualDiscussId};
+    </update>
+    <update id="writeMUserId">
+        update seeds_mutualdiscuss set user_Id=#{user_Id} where seeds_MutualDiscussId=#{seeds_MutualDiscussId};
+    </update>
+    <update id="writeDiscussId">
+        update seeds_mutualdiscuss set seeds_DiscussId=#{seeds_DiscussId} where seeds_MutualDiscussId=#{seeds_MutualDiscussId};
+    </update>
+</mapper>

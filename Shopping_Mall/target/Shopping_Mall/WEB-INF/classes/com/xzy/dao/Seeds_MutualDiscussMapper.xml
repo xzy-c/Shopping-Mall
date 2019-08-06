@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.Seeds_MutualDiscussMapper">
+    <select id="mutualDiscussSort" parameterType="int" resultType="com.xzy.pojo.Seeds_MutualDiscuss">
+        select * from seeds_mutualdiscuss where seeds_DiscussId =#{seeds_DiscussId} order by time ;
+    </select>
+    <select id="getUser" parameterType="int" resultType="com.xzy.pojo.User">
+        select * from user where user_Id=(select user_Id from seeds_mutualdiscuss where seeds_MutualDiscussId=#{seeds_MutualDiscussId});
+    </select>
+    <select id="getMuch" parameterType="int" resultType="com.xzy.pojo.Seeds_MutualDiscuss">
+        select * from seeds_mutualdiscuss where seeds_MutualDiscussId=#{seeds_MutualDiscussId};
+    </select>
+</mapper>
