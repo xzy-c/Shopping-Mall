@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xzy.dao.UserMapper">
 
-
-<insert id="addUser" parameterType="com.xzy.pojo.User">
-  insert into user (user_Name,user_Tel,user_Email)
-  values(#{user_Name},#{user_Tel},#{user_Email})
-  </insert>
-
-    <select id="loginCheck" parameterType="com.xzy.pojo.User" resultType="com.xzy.pojo.User">
+  <select id="loginCheck" parameterType="com.xzy.pojo.User" resultType="com.xzy.pojo.User">
             select * from user where user_Password=#{user_Password} and user_Name=#{user_Name}
 
     </select>
-    <insert id="register" parameterType="com.xzy.pojo.User">
+  <insert id="register" parameterType="com.xzy.pojo.User">
         insert into user(user_Name,user_Email,user_Password,user_Tel)
         values(#{user_Name},#{user_Email},#{user_Password},#{user_Tel})
     </insert>
 
-    <update id="updateuser_Password" parameterType="com.xzy.pojo.User">
+  <update id="updateuser_Password" parameterType="com.xzy.pojo.User">
         update user set user_Password = #{user_Password} where user_Tel = #{user_Tel}
     </update>
 

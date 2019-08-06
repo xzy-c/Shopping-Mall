@@ -4,8 +4,7 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.xzy.pojo.User;
 import com.xzy.service.base.UserService;
-import com.xzy.untis.AliyunMessageUntil;
-import com.xzy.untis.Md5Encrypt;
+import com.xzy.untils.Md5Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,14 +73,14 @@ public class UserController {
 
 
     //登录验证
-                @RequestMapping("/login.action")
-                @ResponseBody
-                public String  login( @RequestParam String user_Name,@RequestParam String user_Password,Model model){
-                    User user = new User();
-                    String p=Md5Encrypt.md5(user_Password);
+    @RequestMapping("/login.action")
+    @ResponseBody
+    public String  login( @RequestParam String user_Name,@RequestParam String user_Password,Model model){
+        User user = new User();
+        String p=Md5Encrypt.md5(user_Password);
 
-                    user.setUser_Name(user_Name);
-                    user.setUser_Password(p);
+        user.setUser_Name(user_Name);
+        user.setUser_Password(p);
 
         if(us.loginCheck(user) != null){
 
@@ -100,7 +99,7 @@ public class UserController {
     //转向个人资料页面
     @RequestMapping("/toeditUser.action")
     public String toeditUser(){
-      return "editUser";
+        return "editUser";
     }
 
 
@@ -109,7 +108,7 @@ public class UserController {
     @RequestMapping("/tologOut.action")
 
     public String tologOut(User user){
-    //使用Enumeration得到所有session中的信息
+        //使用Enumeration得到所有session中的信息
         Enumeration em = request.getSession().getAttributeNames();
         //循环遍历，执行removeAttribute()的Session删除操作
         while(em.hasMoreElements()){

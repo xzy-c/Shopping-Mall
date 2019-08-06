@@ -1,9 +1,6 @@
 package com.xzy.dao;
 
 import com.xzy.pojo.User;
-import org.apache.ibatis.annotations.Param;
-
-import javax.servlet.http.HttpServletRequest;
 
 public interface UserMapper {
 

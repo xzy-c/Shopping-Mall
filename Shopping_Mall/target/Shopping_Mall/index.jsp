@@ -12,13 +12,7 @@
 </head>
 <body>
 <h1>注册</h1>
-<form action="useradd.action" method="post" >
-    姓名:<input type="text" name="user_Name">
-    手机号:<input type="text" name="user_Tel">
-    邮箱:<input type="text" name="user_Email">
-    <input type="submit" value="提交">
-</form>
-<br/>
+
 <form action="login.action" method="post" >
     姓名:<input type="text" name="user_Name">
     密码:<input type="text" name="user_Password">

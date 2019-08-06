@@ -35,15 +35,7 @@
      他的值是一个整数，代表的swehjoi是servlet的加载顺序
      正数就代表在启动web程序的时候就加载这个servlet 值越小加载的时间越早  负数表示的是请求的时候再加载-->
     <load-on-startup>1</load-on-startup>
-
   </servlet>
-
-  <session-config>
-    <!--以分为单位-->
-    <session-timeout>60</session-timeout>
-  </session-config>
-
-
   <servlet-mapping>
     <servlet-name>app</servlet-name>
     <url-pattern>*.action</url-pattern>

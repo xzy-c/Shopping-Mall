@@ -4,14 +4,9 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.xzy.dao.UserMapper;
 import com.xzy.pojo.User;
 import com.xzy.service.base.UserService;
-import com.xzy.untis.AliyunMessageUntil;
+import com.xzy.untils.AliyunMessageUntil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService
