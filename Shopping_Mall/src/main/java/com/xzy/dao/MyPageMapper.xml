@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.MyPageMapper">
+
+    <!--用户删除收藏的商品-->
+    <delete id="delLoveGood" parameterType="map">
+        delete from love_goods where user_Id=#{user_Id} and goods_Id=#{goods_Id}
+    </delete>
+
+    <!--用户删除关注的商家-->
+    <delete id="delLoveShop" parameterType="map">
+      delete from love_shop where user_Id=#{user_Id} and shop_Id=#{shop_Id}
+    </delete>
+
+    <!--删除用户的收货地址-->
+    <delete id="delUserAddr" parameterType="map">
+      delete from user_addr where user_Addr_Id=#{user_Addr_Id}
+    </delete>
+
+    <!--修改用户信息-->
+    <update id="setUpUser" parameterType="map">
+        update user
+        <set>
+            <if test="user_Name !=null and user_Name!='' ">
+                user_Name=#{user_Name},
+            </if>
+            <if test="user_Pic !=null and user_Pic!=''">
+                user_Pic=#{user_Pic},
+            </if>
+            <if test="user_Email !=null and user_Email!=''">
+                user_Email=#{user_Email},
+            </if>
+            <if test="user_Tel !=null and user_Tel!=''">
+                user_Tel=#{user_Tel},
+            </if>
+        </set>
+        where user_Id=#{user_Id}
+    </update>
+
+
+
+    <!--查询用户的红包-->
+    <resultMap id="myCouponMap" type="com.xzy.vo.MyCoupon">
+        <id property="user_Id" column="user_Id"></id>
+        <result property="user_Name"  column="user_Name"></result>
+        <result property="user_Password" column="user_Password"></result>
+        <result property="user_Email" column="user_Email"></result>
+        <result property="user_Tel" column="user_Tel"></result>
+        <result property="user_Birth" column="user_Birth"></result>
+        <result property="user_Creat" column="user_Creat"></result>
+        <result property="user_Pic" column="user_Pic"></result>
+        <result property="user_Real" column="user_Real"></result>
+        <association property="coupon" javaType="com.xzy.pojo.Coupon">
+            <id property="coupon_Id" column="coupon_Id"></id>
+            <result property="user_Id" column="user_Id"></result>
+            <result property="shop_Id" column="shop_Id"></result>
+        </association>
+    </resultMap>
+
+    <select id="getUserCoupon" parameterType="com.xzy.pojo.User" resultMap="myCouponMap">
+      SELECT u.user_Name,c.shop_Id,c.coupon_Id FROM USER u,coupon c WHERE u.`user_Id`=c.`user_Id` AND u.user_Id=#{user_Id};
+    </select>
+
+    <select id="getShopCoupons" parameterType="java.util.List" resultType="com.xzy.pojo.Shop">
+      select * from shop
+        <where>
+            <foreach collection="list" item="shop_Id" open="shop_Id in (" close=")" separator=",">
+                #{shop_Id}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查看用户关注的商家-->
+    <resultMap id="myShopMap" type="com.xzy.vo.MyFocusShop">
+        <id property="user_Id" column="user_Id"></id>
+        <result property="user_Name"  column="user_Name"></result>
+        <result property="user_Password" column="user_Password"></result>
+        <result property="user_Email" column="user_Email"></result>
+        <result property="user_Tel" column="user_Tel"></result>
+        <result property="user_Birth" column="user_Birth"></result>
+        <result property="user_Creat" column="user_Creat"></result>
+        <result property="user_Pic" column="user_Pic"></result>
+        <result property="user_Real" column="user_Real"></result>
+        <association property="foucsShop" javaType="com.xzy.pojo.FoucsShop">
+            <id property="foucsShopId" column="user_Love_Id"></id>
+            <result property="user_Id" column="user_Id"></result>
+            <result property="shop_Id" column="shop_Id"></result>
+        </association>
+    </resultMap>
+
+    <select id="getUserFocusShop" parameterType="com.xzy.pojo.User" resultMap="myShopMap">
+      SELECT u.user_Name,l.shop_Id FROM USER u,love_shop l WHERE u.user_Id=l.user_Id AND u.user_Id=#{user_Id}
+    </select>
+
+    <select id="getUserFoucsShops" parameterType="java.util.List" resultType="com.xzy.pojo.Shop">
+        select * from shop
+        <where>
+            <foreach collection="list" item="shop_Id" open="shop_Id in (" close=")" separator=",">
+                #{shop_Id}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查询用户收藏的商品-->
+    <resultMap id="myProductMap" type="com.xzy.vo.MyFocusGoods">
+        <id property="user_Id" column="user_Id"></id>
+        <result property="user_Name"  column="user_Name"></result>
+        <result property="user_Password" column="user_Password"></result>
+        <result property="user_Email" column="user_Email"></result>
+        <result property="user_Tel" column="user_Tel"></result>
+        <result property="user_Birth" column="user_Birth"></result>
+        <result property="user_Creat" column="user_Creat"></result>
+        <result property="user_Pic" column="user_Pic"></result>
+        <result property="user_Real" column="user_Real"></result>
+        <association property="goods" javaType="com.xzy.pojo.Goods">
+            <id property="goods_Id" column="goods_Id"></id>
+            <result property="goods_Name" column="goods_Name"></result>
+            <result property="goods_Picture" column="goods_Picture"></result>
+            <result property="goods_Price" column="goods_Price"></result>
+            <result property="Small_Cate_ID" column="Small_Cate_ID"></result>
+            <result property="goods_ComNumber" column="goods_ComNumber"></result>
+            <result property="goods_Descr" column="goods_Descr"></result>
+            <result property="goods_Stock" column="goods_Stock"></result>
+            <result property="goods_Num" column="goods_Num"></result>
+            <result property="shop_Id" column="shop_Id"></result>
+        </association>
+    </resultMap>
+
+    <select id="getUserFocusGood" parameterType="com.xzy.pojo.User" resultMap="myProductMap">
+      SELECT u.user_Name,l.goods_Id FROM USER u,love_goods l WHERE u.user_Id=l.user_Id AND u.user_Id=#{user_Id}
+    </select>
+
+    <select id="getUserFocusGoods" parameterType="java.util.List" resultType="com.xzy.pojo.Goods">
+        select * from goods
+        <where>
+            <foreach collection="list" item="Id" open="goods_Id in (" close=")" separator=",">
+                #{Id}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查询用户的收货地址-->
+    <select id="getUserAddrs" parameterType="com.xzy.pojo.User" resultType="com.xzy.pojo.User_Addr">
+        select * from user_Addr where user_Id=#{user_Id}
+    </select>
+
+
+    <!--查询用户信息-->
+    <select id="getUserInfo" parameterType="com.xzy.pojo.User" resultType="com.xzy.pojo.User">
+       select * from user where user_Name=#{user_Name}
+   </select>
+    <!--查询收藏商品数目-->
+    <select id="getGoodsCount" parameterType="com.xzy.pojo.User" resultType="Integer">
+        SELECT COUNT(Love_Goods_Id)AS 'count' FROM love_goods WHERE user_Id=#{user_Id};
+    </select>
+   <!--查询关注商家数目-->
+    <select id="getShopCount" parameterType="com.xzy.pojo.User" resultType="Integer">
+        SELECT COUNT(user_Love_Id)AS 'count' FROM love_shop WHERE user_Id=#{user_Id};
+    </select>
+    <!--查询用户拥有红包数目-->
+    <select id="getCouponCount" parameterType="com.xzy.pojo.User" resultType="Integer">
+        SELECT COUNT(coupon_Id)AS 'count' FROM coupon WHERE user_Id=#{user_Id};
+    </select>
+    <!--查询用户拥有的地址的数目-->
+    <select id="getAddrCount" parameterType="com.xzy.pojo.User" resultType="Integer">
+        SELECT COUNT(user_Addr_Id)AS 'count' FROM user_addr WHERE user_Id=#{user_Id};
+    </select>
+    <!--展示用户信息-->
+    <select id="showUpUser" parameterType="com.xzy.pojo.User" resultType="com.xzy.pojo.User">
+        select * from user where user_Id=#{user_Id}
+    </select>
+
+    <select id="getAllOrders" resultType="com.xzy.vo.OrdersVo">
+        select orders_Id,orders_Mone from orders where user_Id=#{user_Id}
+    </select>
+
+    <select id="getAllOrdersItem" parameterType="Integer" resultType="com.xzy.pojo.OrdersItem">
+        select * from ordersitem
+        where orders_Id=#{orders_Id}
+    </select>
+
+    <select id="getShopList" parameterType="com.xzy.vo.GoodsIdList" resultType="Integer">
+        select shop_Id from goods
+        <where>
+            <foreach collection="ids" item="goods_Id" open="and goods_Id in(" close=")" separator=",">
+                #{goods_Id}
+            </foreach>
+        </where>
+        group by shop_Id
+    </select>
+
+    <select id="selectShopName" parameterType="Integer" resultType="String">
+        select shop_Name from shop
+        where shop_Id=#{shop_Id}
+    </select>
+
+    <select id="getShopByGoodsId" parameterType="Integer" resultType="com.xzy.pojo.Shop">
+        select * from goods
+        where goods_Id=#{goods_Id}
+    </select>
+
+
+    <select id="selectGoodVo" parameterType="Integer" resultType="com.xzy.vo.GoodsVo">
+        select goods_Name,goods_Price,goods_Id,goods_Picture,goods_Num from goods
+        where goods_Id=#{goods_Id}
+    </select>
+</mapper>

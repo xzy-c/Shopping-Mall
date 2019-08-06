@@ -1,18 +1,26 @@
-package com.xzy.pojo;
+package com.xzy.vo;
+
+import com.xzy.pojo.Goods;
 
 import java.util.Date;
+import java.util.List;
 
-public class User {
-    private int user_Id;
-    private String user_Name;
-    private String user_Password;
-    private String user_Email;
-    private String user_Tel;
-    private Date user_Birth;
-    private Date user_Creat;
-    private String user_Pic;
-    private String user_Real;
-
+/**
+ * @author yangxin
+ * @date 2019/7/27 - 23:42
+ */
+public class MyFocusGoods {
+    private int user_Id;//用户Id
+    private String user_Name;//用户名称
+    private String user_Password;//用户密码
+    private String user_Email;//用户邮箱
+    private String user_Tel;//用户电话
+    private String user_Birth;//用户生日
+    private Date user_Creat;//用户注册日期
+    private String user_Pic;//用户头像照片
+    private String user_Real;//用户真实名称
+    private Goods goods;//用户关联表收藏
+    private List<Integer> goodsIds;//用户收藏的商品
     public int getUser_Id() {
         return user_Id;
     }
@@ -53,11 +61,11 @@ public class User {
         this.user_Tel = user_Tel;
     }
 
-    public Date getUser_Birth() {
+    public String getUser_Birth() {
         return user_Birth;
     }
 
-    public void setUser_Birth(Date user_Birth) {
+    public void setUser_Birth(String user_Birth) {
         this.user_Birth = user_Birth;
     }
 
@@ -85,18 +93,19 @@ public class User {
         this.user_Real = user_Real;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_Id=" + user_Id +
-                ", user_Name='" + user_Name + '\'' +
-                ", user_Password='" + user_Password + '\'' +
-                ", user_Email='" + user_Email + '\'' +
-                ", user_Tel='" + user_Tel + '\'' +
-                ", user_Birth='" + user_Birth + '\'' +
-                ", user_Creat=" + user_Creat +
-                ", user_Pic='" + user_Pic + '\'' +
-                ", user_Real='" + user_Real + '\'' +
-                '}';
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public List<Integer> getGoodsIds() {
+        return goodsIds;
+    }
+
+    public void setGoodsIds(List<Integer> goodsIds) {
+        this.goodsIds = goodsIds;
     }
 }

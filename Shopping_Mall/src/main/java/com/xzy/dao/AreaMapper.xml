@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.AreaMapper">
+
+    <select id="findAllArea" parameterType="int" resultType="com.xzy.pojo.Area">
+        select * from area where parentid=#{parentid};
+    </select>
+
+    <!--添加用户地址(设置默认/非默认)-->
+    <insert id="addDefAddr" parameterType="com.xzy.pojo.User_Addr" >
+        insert into user_addr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user_Id != null  and user_Id!=''">
+                user_Id,
+            </if>
+            <if test="user_Addr_Name != null  and user_Addr_Name!=''">
+                user_Addr_Name,
+            </if>
+            <if test="user_Addr_Num != null and user_Addr_Num!=''">
+                user_Addr_Num,
+            </if>
+            <if test="user_Addr_Pro != null and user_Addr_Pro!=''">
+                user_Addr_Pro,
+            </if>
+            <if test="user_Addr_City != null and user_Addr_City != ''">
+                user_Addr_City,
+            </if>
+            <if test="user_Addr_County != null and user_Addr_County!=''">
+                user_Addr_County,
+            </if>
+            <if test="user_Address != null and user_Address!=''">
+                user_Address,
+            </if>
+            <if test="user_Addr_Defaddr==1">
+                user_Addr_Defaddr,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="user_Id != null  and user_Id!=''">
+                #{user_Id},
+            </if>
+            <if test="user_Addr_Name != null  and user_Addr_Name!=''">
+                #{user_Addr_Name},
+            </if>
+            <if test="user_Addr_Num != null and user_Addr_Num!=''">
+                #{user_Addr_Num},
+            </if>
+            <if test="user_Addr_Pro != null and user_Addr_Pro!=''">
+                #{user_Addr_Pro},
+            </if>
+            <if test="user_Addr_City != null and user_Addr_City != ''">
+                #{user_Addr_City},
+            </if>
+            <if test="user_Addr_County != null and user_Addr_County!=''">
+                #{user_Addr_County},
+            </if>
+            <if test="user_Address != null and user_Address!=''">
+                #{user_Address},
+            </if>
+            <if test="user_Addr_Defaddr==1">
+                #{user_Addr_Defaddr},
+            </if>
+        </trim>
+    </insert>
+
+    <!--更新用户旧的地址的默认字段-->
+    <update id="updateDefAddr" parameterType="int">
+        update user_addr set user_Addr_Defaddr=0 where user_Id=#{user_Id}
+    </update>
+
+</mapper>
