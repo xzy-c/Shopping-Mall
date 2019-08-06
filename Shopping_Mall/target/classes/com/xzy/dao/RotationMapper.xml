@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.RotationMapper">
+
+
+  <select id="findImg" resultType="com.xzy.pojo.Goods">
+
+        //select goods_Picture from goods where goods_id=#{id}
+
+        //SELECT * from goods ORDER BY RAND() LIMIT 4
+
+      //从除了今日新品的所有物品里随机抽4个商品图片做首页轮播图
+       SELECT * FROM goods WHERE goods_ID >=
+       ((SELECT MAX(goods_ID)-5 FROM goods)-(SELECT MIN(goods_ID)-5 FROM goods)) * RAND()
+       + (SELECT MIN(goods_ID)-5 FROM goods) LIMIT 4;
+
+  </select>
+
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.NewGoodsMapper">
+    <select id="newGoods" resultType="com.xzy.pojo.Goods">
+
+         select * from goods order by good_Id desc limit 5
+
+
+    </select>
+
+
+</mapper>

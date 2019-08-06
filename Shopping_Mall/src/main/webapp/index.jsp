@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ASUS
+  User: ASUS(Longzong)
   Date: 2019/7/19
   Time: 23:42
   To change this template use File | Settings | File Templates.
@@ -8,29 +8,47 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>种草</title>
+    <title>ssm框架整合</title>
 </head>
 <body>
-<h1>种草了昂</h1>
-<form action="##" method="post">
-    封面:<input type="image" src="" name="cover">
-    图片:<input type= "image" src="./img/1.jpg" name="im" >
-    用户Id<input type="text" src="" name="user_Id">
-    商品Id<input type="text" src="" name="goods_Id">
-    点赞数<input type="text" src="" name="likes">
-    <input type="text" src="" name="cover">
-    <input type="text" src="" name="collections">
+<%--<h1>ssm框架整合</h1>
+    <form action="/lunboget.action" method="post">
+        name:<input type="text" name="uname">
+        age:<input type="text" name="age">
+        email:<input type="text" name="email">
+        <input type="submit" value="提交">
+    </form>--%>
+    <form action="search.action" method="post">
+        search:<input type="text" name="input">
+        <input type="submit" value="提交">
 
-    标题:<input type="text" name="title">
-    内容:<input type="text" name="description">
+    </form>
+</body>
 
+</html>
+
+<%--
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+&lt;%&ndash;
+  Created by IntelliJ IDEA.
+  User: Zhang
+  Date: 2019/7/28
+  Time: 12:05
+  To change this template use File | Settings | File Templates.
+&ndash;%&gt;
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>首页轮播</title>
+</head>
+<body>
+<h1>返回首页轮播参数</h1>
+<from action="lunboget.action" method="post">
+    id:<input type="text" name="id">
     <input type="submit" value="提交">
-</form>
-<form action="/up.action" method="post">
-    <h1><input type="number" name="seeds_Id" value="3"> </h1>
-    <input type="submit" value="Up">
-</form>
-<form action="/like.action"><h1><input type="submit" value="<index>"></h1></form>
+</from>
 
 </body>
 </html>
+--%>
