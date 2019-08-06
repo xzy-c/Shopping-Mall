@@ -1,16 +1,9 @@
 package com.xzy.pojo;
 
-import java.io.Serializable;
-
-/**
- * @author yangxin
- * @date 2019/7/26 - 12:32
- * 优惠券
- */
-public class Coupon implements Serializable {
-    private int coupon_Id;//优惠券Id
-    private int user_Id;//优惠券所属用户
-    private int shop_Id;//优惠券所属店家
+public class Coupon {
+    private int coupon_Id;
+    private int user_Id;
+    private int shop_Id;
 
     public int getCoupon_Id() {
         return coupon_Id;

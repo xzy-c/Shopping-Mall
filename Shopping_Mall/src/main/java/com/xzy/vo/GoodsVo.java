@@ -55,6 +55,7 @@ public class GoodsVo {
                 ", goods_Name='" + goods_Name + '\'' +
                 ", goods_Picture='" + goods_Picture + '\'' +
                 ", goods_Price='" + goods_Price + '\'' +
+                ", goods_Num=" + goods_Num +
                 '}';
     }
 }

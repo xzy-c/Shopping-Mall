@@ -19,6 +19,7 @@
   <!--默认加载WEB-INF/servletname-servlet.name-->
 
   <!--开启springmvc的注解,替我们自动配置最新版的注解的处理器映射器和处理器适配器-->
+  <!--开启springmvc的注解-->
   <mvc:annotation-driven/>
 
   <!--扫描controller注解，别的注解不扫描-->
@@ -35,6 +36,15 @@
     <mvc:resources location="/css/" mapping="/css/**" />
     <mvc:resources location="/files/" mapping="/files/**" />
     <mvc:resources location="/js/" mapping="/js/**" />
+ <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/pages/"/>
+    <property name="suffix" value=".jsp"/>
+  </bean>
+
+  <!-- 设置静态资源不过滤,使得可以访问到-->
+  <mvc:resources location="/css/" mapping="/css/**" />
+  <mvc:resources location="/images/" mapping="/images/**" />
+  <mvc:resources location="/js/" mapping="/js/**" />
 
 
     <!-- 定义文件解释器 -->
