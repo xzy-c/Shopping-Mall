@@ -48,7 +48,7 @@ public class OrdersController {
             System.out.println(goods);
             if(goods.getGoods_Stock()>0)//有库存
             {
-                orders=ordersService.addOrders(goods_Id,user.getUser_id(),ordersItem_Sum);
+                orders=ordersService.addOrders(goods_Id,user.getUser_Id(),ordersItem_Sum);
                 mv.addObject("money",orders.getOrders_Mone());
                 mv.addObject("orders_Id",orders.getOrders_Id());
                 mv.setViewName("topay");
@@ -77,7 +77,7 @@ public class OrdersController {
         }
         else
         {
-            int user_Id=user.getUser_id();
+            int user_Id=user.getUser_Id();
             mv.setViewName("topay");
             orders=ordersService.addCartOrders(user_Id,goods_Rel_Id);
             mv.addObject("money",orders.getOrders_Mone());
@@ -108,7 +108,7 @@ public class OrdersController {
 
         else
         {
-            mv.addObject("OrdersAll",ordersService.getAllShopAndGoods(user.getUser_id(),state));
+            mv.addObject("OrdersAll",ordersService.getAllShopAndGoods(user.getUser_Id(),state));
             mv.setViewName("success");
         }
         return mv;
@@ -125,7 +125,7 @@ public class OrdersController {
             mv.setViewName("fail");
         }
         else{
-            mv.addObject(ordersService.getOrdersDetails(orders_Id,user.getUser_id()));
+            mv.addObject(ordersService.getOrdersDetails(orders_Id,user.getUser_Id()));
             mv.setViewName("success");
         }
         return mv;

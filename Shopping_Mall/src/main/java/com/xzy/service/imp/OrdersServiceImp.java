@@ -32,7 +32,6 @@ public class OrdersServiceImp implements OrdersService {
         addr=ordersmapper.findByAddress(user_Id);
         orders.setOrders_Date(new Date());
         orders.setOrders_Apply(0);
-        orders.setOrders_Return(0);
         orders.setUser_Addr_Id(addr.getUser_Addr_Id());
         orders.setOrders_Subs(0);
         orders.setUser_Id(user_Id);
@@ -93,7 +92,6 @@ public class OrdersServiceImp implements OrdersService {
         System.out.println(addr.toString());
         orders.setOrders_Date(new Date());
         orders.setOrders_Apply(0);
-        orders.setOrders_Return(0);
         orders.setUser_Addr_Id(addr.getUser_Addr_Id());
         orders.setOrders_Mone(orders_Mone);
         orders.setOrders_Subs(0);
