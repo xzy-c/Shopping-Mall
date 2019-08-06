@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.SearchMapper">
+
+    <select id="search" resultType="com.xzy.pojo.Goods" parameterType="String">
+
+        select * from goods
+        <where>
+            //通过商品名模糊查询
+            <if test="_parameter != null and _parameter != ''">
+                goods_Name like concat('%',#{_paramter},'%')
+            </if>
+            //或者通过商品描述模糊查询
+            <if test="_parameter != null and _parameter != ''">
+                OR goods_Descr like concat('%',#{_paramter},'%')
+            </if>
+
+        </where>
+
+    </select>
+
+
+</mapper>

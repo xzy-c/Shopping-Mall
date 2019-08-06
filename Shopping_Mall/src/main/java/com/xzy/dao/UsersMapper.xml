@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xzy.dao.UsersMapper">
 
-<insert id="addUser" parameterType="com.xzy.pojo.Users">
+<insert id="addUser" parameterType="com.xzy.pojo.Goods">
   insert into users(uname,email,age)
   values(#{uname},#{email},  #{age})
   </insert>

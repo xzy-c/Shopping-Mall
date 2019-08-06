@@ -1,7 +1,7 @@
 package com.xzy.service.base;
 
-import com.xzy.pojo.Users;
+import com.xzy.pojo.Goods;
 
 public interface UserService {
-    public void addUsers(Users u);
+    public void addUser(Goods u);
 }
