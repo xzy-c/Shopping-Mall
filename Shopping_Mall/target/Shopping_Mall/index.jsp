@@ -1,22 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2019/7/19
-  Time: 23:42
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>ssm框架整合</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>查询商品列表</title>
 </head>
 <body>
-<h1>ssm框架整合</h1>
-<form action="useradd.action" method="post">
-    name:<input type="text" name="uname">
-    age:<input type="text" name="age">
-    email:<input type="text" name="email">
-    <input type="submit" value="提交">
+<p>snjjnjknjbuhdqgwfwfhg</p>
+<form action="/querygoods.action" method="post">
+    一级列表ID：<input type="hidden" name="Big_Cate_ID"  />;
+
+    <input type="submit" value="提交"/>
 </form>
 </body>
+
 </html>

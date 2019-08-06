@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>查询商品列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>查询商品列表</title>
 </head>
 <body>
 <p>snjjnjknjbuhdqgwfwfhg</p>
-<form action="/querygoods.action" method="post">
-    一级列表ID：<input type="hidden" name="Big_Cate_ID" value="1" />;
-
-    <input type="submit" value="提交"/>
+<form action="${pageContext.request.contextPath }/querygoods1.action" method="post">
+	一级列表ID：<input type="hidden" name="Big_Cate_ID" />;
+	<input type="submit" value="提交"/>
 </form>
 </body>
 

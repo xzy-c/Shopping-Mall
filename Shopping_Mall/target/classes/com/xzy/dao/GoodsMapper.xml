@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.GoodsMapper">
+    <resultMap id="BaseResultMap" type="com.xzy.pojo.Goods">
+        <id column="goods_Id" property="goods_Id"  />
+        <result column="Small_Cate_ID" property="Small_Cate_ID" />
+        <result column="goods_Name" property="goods_Name" />
+        <result column="goods_Price" property="goods_Price"  />
+        <result column="goods_ComNumber" property="goods_ComNumber"/>
+        <result column="goods_Picture" property="goods_Picture" />
+        <result column="goods_Descr" property="goods_Descr"  />
+        <result column="goods_Stock" property="goods_Stock"  />
+        <result column="goods_Num" property="goods_Num"  />
+        <result column="shop_Id" property="shop_Id"  />
+    </resultMap>
+    <resultMap id="Small_CateResultMap" type="com.xzy.pojo.Small_Cate">
+        <id column="Small_Cate_ID" property="Small_Cate_ID"  />
+        <result column="Big_Cate_ID" property="Big_Cate_ID" />
+        <result column="Small_Cate_Name" property="Small_Cate_Name" />
+    </resultMap>
+
+
+    <select id="searchSmall_Cate" parameterType="int"  resultMap="Small_CateResultMap">
+        select * from small_cate where Big_Cate_ID=#{Big_Cate_ID};
+    </select>
+
+    <select id="searchGoods" parameterType="int"  resultMap="BaseResultMap">
+        select * from goods where Small_Cate_ID=#{Small_Cate_ID}
+    </select>
+
+</mapper>
