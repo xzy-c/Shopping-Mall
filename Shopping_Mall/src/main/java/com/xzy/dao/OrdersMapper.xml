@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.OrdersMapper">
+
+    <select id="findByAddress" parameterType="Integer" resultType="com.xzy.pojo.User_Addr">
+        select * from user_addr
+        where user_Addr_Id=#{id}
+        and user_Addr_Defaddr=1
+    </select>
+    <insert id="addOrders" parameterType="com.xzy.pojo.Orders" useGeneratedKeys="true" keyProperty="orders_Id">
+        insert into orders(user_Id,user_Addr_Id,orders_Apply,orders_Mone,orders_Date,orders_Dis,orders_Subs,orders_Return)
+        values (#{user_Id},#{user_Addr_Id},#{orders_Apply},#{orders_Mone},#{orders_Date},#{orders_Dis},#{orders_Subs},#{orders_Return})
+    </insert>
+    <select id="findGoodsById"  parameterType="Integer" resultType="com.xzy.pojo.Goods">
+        select * from goods where goods_Id=#{id}
+    </select>
+    <insert id="addOrdersItem" parameterType="com.xzy.pojo.OrdersItem">
+        insert into ordersItem (orders_Id,goods_Id,ordersItem_Sum,ordersItem_Sub)
+        values (#{orders_Id},#{goods_Id},#{ordersItem_Sum},#{ordersItem_Sub})
+    </insert>
+    <delete id="delOrders" parameterType="Integer">
+        delete from orders
+        where orders_Id=#{id}
+    </delete>
+    <delete id="delOrdersItem" parameterType="java.util.List">
+        delete from OrdersItem
+        where orders_Id=#{orders_Id}
+    </delete>
+    <select id="getGoodsPrice" parameterType="Integer" resultType="Float">
+        select goods_Price from goods
+        where goods_Id=#{goods_Id}
+    </select>
+    <select id="getAllOrders" resultType="com.xzy.vo.OrdersVo">
+        select orders_Id,orders_Mone from orders
+        <where>
+            user_Id=#{user_Id}
+            <if test="state==2">
+                and orders_Dis=0
+            </if>
+            <if test="state==3">
+                and orders_Apply=0
+            </if>
+        </where>
+    </select>
+    <select id="getAllOrdersItem" parameterType="Integer" resultType="com.xzy.pojo.OrdersItem">
+        select * from ordersitem
+        where orders_Id=#{orders_Id}
+    </select>
+    <select id="getShopByGoodsId" parameterType="Integer" resultType="com.xzy.pojo.Shop">
+        select * from goods
+        where goods_Id=#{goods_Id}
+    </select>
+    <select id="getGoodsByGoodsId" parameterType="Integer" resultType="com.xzy.pojo.Goods">
+        select * from goods
+        where goods_Id=#{goods_Id}
+    </select>
+    <select id="getShopList" parameterType="com.xzy.vo.GoodsIdList" resultType="Integer">
+         select shop_Id from goods
+         <where>
+             <foreach collection="ids" item="goods_Id" open="and goods_Id in(" close=")" separator=",">
+                 #{goods_Id}
+             </foreach>
+         </where>
+        group by shop_Id
+    </select>
+    <select id="getShopById" parameterType="Integer" resultType="com.xzy.pojo.Shop">
+        select * from shop where shop_Id=#{shop_Id}
+    </select>
+    <update id="delOne" parameterType="Integer">
+        update goods set goods_Stock=goods_Stock-1
+        where goods_Id=#{goods_Id}
+    </update>
+    <select id="selectCoupon" resultType="com.xzy.pojo.Coupon">
+        select * from coupon
+        where user_Id=#{user_Id} and shop_Id=#{shop_Id}
+    </select>
+    <delete id="deleteCoupon" parameterType="Integer">
+        delete from coupon where coupon_Id=#{coupon_Id}
+    </delete>
+    <select id="getGoodsRel" parameterType="Integer" resultType="com.xzy.pojo.Goods_Rel">
+        select * from goods_rel
+        where goods_Rel_Id=#{goods_Rel_Id}
+    </select>
+    <delete id="delCart" parameterType="Integer">
+        delete from goods_rel
+        where goods_Rel_Id=#{goods_Rel_Id}
+    </delete>
+    <update id="increaseGoods">
+        update goods set goods_Num=#{goods_Num}
+        where goods_Id=#{goods_Id}
+    </update>
+    <update id="updatePrice">
+        update orders set orders_Mone=#{orders_Mone}
+        where orders_Id=#{orders_Id}
+    </update>
+
+    <select id="selectShopName" parameterType="Integer" resultType="String">
+        select shop_Name from shop
+        where shop_Id=#{shop_Id}
+    </select>
+    <select id="selectGoodVo" parameterType="Integer" resultType="com.xzy.vo.GoodsVo">
+        select goods_Name,goods_Price,goods_Id,goods_Picture,goods_Num from goods
+        where goods_Id=#{goods_Id}
+    </select>
+    <update id="updateOrders" parameterType="Integer">
+         update orders set orders_Apply=1
+        where orders_Id=#{orders_Id}
+    </update>
+</mapper>
