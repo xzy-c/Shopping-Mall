@@ -1,40 +1,31 @@
-package com.xzy.pojo;
-
-public class Users {
-    private int id;
-    private String uname;
-    private int age;
-    private String email;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
+//package com.xzy.pojo;
+//
+//public class Users {
+//    private int user_Id;
+//    private String user_Name;
+//    private int user_Email;
+//
+//    public int getUser_Id() {
+//        return user_Id;
+//    }
+//
+//    public void setUser_Id(int user_Id) {
+//        this.user_Id = user_Id;
+//    }
+//
+//    public String getUser_Name() {
+//        return user_Name;
+//    }
+//
+//    public void setUser_Name(String user_Name) {
+//        this.user_Name = user_Name;
+//    }
+//
+//    public int getUser_Email() {
+//        return user_Email;
+//    }
+//
+//    public void setUser_Email(int user_Email) {
+//        this.user_Email = user_Email;
+//    }
+//}

@@ -8,15 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ssm框架整合</title>
+    <title>测试</title>
 </head>
 <body>
-<h1>ssm框架整合</h1>
+<h1>Test</h1>
 <form action="useradd.action" method="post">
-    name:<input type="text" name="uname">
-    age:<input type="text" name="age">
-    email:<input type="text" name="email">
+    id:<input type="text" name="user_Id">
+    姓名:<input type="text" name="user_Name">
+    **邮箱:<input type="text" name="user_Email78">
     <input type="submit" value="提交">
+</form>
+<form action="find.action" method="post">
+    use_Id:<input type="text" name="use_Id">
+
+<input type="submit" value="提交">
+</form>
+
+<form action="delete.action" method="post">
+    <input type="submit" value="查询">
 </form>
 </body>
 </html>
