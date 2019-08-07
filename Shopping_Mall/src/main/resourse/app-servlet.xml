@@ -18,7 +18,7 @@
 
   <!--默认加载WEB-INF/servletname-servlet.name-->
 
-  <!--开启springmvc的注解-->
+  <!--开启springmvc的注解,代替注释映射器和注释适配器-->
   <mvc:annotation-driven/>
 
   <!--扫描controller注解，别的注解不扫描-->
@@ -27,7 +27,8 @@
   <!--配置视图解析器-->
 
  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/pages/"/>
+    <!--配置视图解析器的前缀和后缀-->
+     <property name="prefix" value="/WEB-INF/pages/"/>
     <property name="suffix" value=".jsp"/>
   </bean>
 
