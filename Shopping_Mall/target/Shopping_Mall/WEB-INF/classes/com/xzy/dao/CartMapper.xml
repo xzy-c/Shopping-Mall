@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.CartMapper">
+    <!-- 通过user_Id查询到cart_Id-->
+    <select id="findCartID" parameterType="int" >
+        select cart_Id
+        from cart
+        where user_Id=#{userId}
+    </select>
+    <!--查询到good_rel中的所有属性-->
+    <!--遍历整个good_rel表，找到所有用户所对应的所有商品属性-->
+    <select id="findAllgood_rel"  parameterType="com.xzy.Vo.CartCostom" >
+        select *
+        from goods_rel
+        where cart_Id in
+        <foreach collection="Goods_rels"  item="cartId" index="index" open="(" separator="," close=")">
+            #{cart_Id}
+        </foreach>
+    </select>
+    <!--通过goods_Id查找到所有商品的信息-->
+    <select id="findAllCart" parameterType="com.xzy.Vo.CartVo" resultType="com.xzy.Vo.CartCostom">
+        select goods.goods_Price,goods.goods_Name,goods.goods_Price,shopping_mall.shop.shop_Name
+        from goods
+        where (select goods_rel.goods_Id from goods_rel where cart_Id=#{cart_Id} )
+        group by shop_Id=#{shop_Id}
+    </select>
+    <!--删除一个商品-->
+    <delete id="deleteCart" parameterType="com.xzy.pojo.goods_rel" >
+        delete from goods_rel
+        where (select (select cart_Id from cart where user_Id=#{user_Id})
+                 from goods_rel
+                 where goods_Id=#{goods_Id})
+    </delete>
+
+    <!--添加一个商品-->
+    <insert id="insertCart" parameterType="com.xzy.Vo.insertCart">
+        insert into goods_rel(cart_Id,goods_Id,goods_Rel_Am,good_Rel_Date)
+        values (cart_Id,(select goods_Id from goods_rel where cart_Id=#{cart_Id}),goods_Rel_Am,now())
+    </insert>
+
+
+    <!--查询商品对应的优惠券面额-->
+    <select id="findcoupon" parameterType="com.xzy.Vo.findcoupon">
+        select shop_coupon_Price
+        from shop
+             where  (select shop_Id
+                     from  coupon
+                     where user_Id=#{user_Id})=#{shop_Id}
+    </select>
+    <!--通过购物车关联表查到商品-->
+    <select id="findAllgoods" parameterType="com.xzy.Vo.findAllgoods">
+        select goods.goods_Price,goods.goods_Check
+        from goods
+             where goods_Id
+    </select>
+
+    <!--勾选状态-->
+    <update id="CheckOrUnCheck" parameterType="com.xzy.Vo.Check">
+        update goods
+        set goods_Check=#{goods_Check}
+        where (select goods_Id
+               from  goods_rel
+               where (select cart_Id
+                      from cart
+                      where user_Id=#{user_Id})=#{cart_Id})=getPrice#{goods_Id}
+    </update>
+    <!--修改商品数量-->
+    <update id="ChangeNum" parameterType="com.xzy.Vo.ChangeNum">
+        update goods_rel
+        set goods_Rel_Am=#{goods_Rel_Am}
+                where (select goods_Id
+                       from goods_rel
+                       where (select cart_Id
+                              from cart
+                              where user_Id=#{user_Id})=#{cart_Id})=#{goods_Id}
+    </update>
+    <!--按你所需-->
+    <select id="Need" parameterType="com.xzy.Vo.Need">
+        select goods.goods_Price,goods.goods_Name,goods.goods_Picture
+        from goods
+        where goods.goods_Id=#{goods_Id}
+                  like 'goods_Name'
+    </select>
+
+    <select id="getPrice" parameterType="com.xzy.pojo.goods">
+        select goods_Price
+        from goods
+             where goods_Id=#{goods_Id}
+    </select>
+    <select id="sendAll" parameterType="com.xzy.Vo.sendAll">
+        select goods_rel.goods_Rel_Am,goods_rel.goods_Rel_Id,goods_rel.goods_Rel_Sum
+        from goods_rel
+             where (select cart.cart_Id from cart where user_Id=#{user_Id})=#{cart_Id};
+        select goods.goods_Id,goods.goods_Picture,goods.goods_Name,goods.goods_Price
+        from goods
+             where goods_Id=#{goods_Id};
+        select shop_Name
+        from shop
+        where shop_Id=#{shop_Id}
+    </select>
+</mapper>
