@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc78e63a-8e84-4369-a8a4-25026a83a7b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/base/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/base/GoodsEvaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/CartServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/GoodsEvaServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/vo/CommentVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/vo/ReplyVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/vo/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/.idea/dataSources/1223fa58-7936-4e55-835d-66205683d65a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/.idea/dataSources/1223fa58-7936-4e55-835d-66205683d65a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/dao/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/dao/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/pojo/Goods.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/base/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/base/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/GoodsServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/GoodsServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/ShopServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/service/imp/ShopServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/vo/GoodVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/java/com/xzy/vo/GoodVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/resources/mappers/GoodsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/src/main/resources/mappers/ShopMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/src/main/resources/mappers/ShopMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/controller/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/controller/GoodsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/dao/GoodsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/dao/GoodsMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/pojo/Goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/pojo/Goods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/base/GoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/base/GoodsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/imp/GoodsServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/imp/GoodsServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/imp/ShopServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/service/imp/ShopServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/vo/GoodVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/com/xzy/vo/GoodVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/mappers/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/mappers/GoodsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/mappers/ShopMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/Shopping_Mall/WEB-INF/classes/mappers/ShopMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/controller/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/controller/GoodsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/dao/GoodsMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/dao/GoodsMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/pojo/Goods.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/pojo/Goods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/base/GoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/base/GoodsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/imp/GoodsServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/imp/GoodsServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/imp/ShopServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/service/imp/ShopServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/vo/GoodVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/com/xzy/vo/GoodVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/mappers/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/mappers/GoodsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shopping_Mall/target/classes/mappers/ShopMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopping_Mall/target/classes/mappers/ShopMapper.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-579197045">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="47" />
+    <option name="width" value="1920" />
+    <option name="height" value="988" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Shopping-Mall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shopping-Mall" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Shopping-Mall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shopping-Mall" type="462c0819:PsiDirectoryNode" />
+              <item name="Shopping_Mall" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Shopping_Mall" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc78e63a-8e84-4369-a8a4-25026a83a7b4" name="Default Changelist" comment="" />
+      <created>1564125492135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564125492135</updated>
+      <workItem from="1564125493715" duration="344000" />
+      <workItem from="1565246010440" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="354000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="47" width="1920" height="988" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+</project>

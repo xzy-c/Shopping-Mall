@@ -1,10 +1,10 @@
 package com.xzy.service.imp;
 
 import com.common.ServerResponse;
+import com.xzy.pojo.Goods;
 import com.xzy.vo.ShopVo;
 import com.xzy.dao.GoodsMapper;
 import com.xzy.dao.ShopMapper;
-import com.xzy.pojo.Goods;
 import com.xzy.pojo.Shop;
 import com.xzy.service.base.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +43,7 @@ public class ShopServiceImp implements ShopService {
     public ServerResponse<ShopVo> getShopInfo(Integer shopId) {
         Shop shop = shopMapper.getShop(shopId);
         int popular = shopMapper.getShopPopular(shopId);
-        List<Goods> shopGoods = new ArrayList<>();
-        List<Integer> shopGoodsNum = shopMapper.getShopGoodsNum(shopId);
-        for (Integer goodId : shopGoodsNum) {
-            shopGoods.add(goodsMapper.getGoods(goodId));
-        }
+        List<Goods> shopGoods = goodsMapper.getGoodsByShopId(shopId);
         ShopVo shopVo = new ShopVo(shop,popular,shopGoods);
         return ServerResponse.createBySuccess(shopVo);
     }

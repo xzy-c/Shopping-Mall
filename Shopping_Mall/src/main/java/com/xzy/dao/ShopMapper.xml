@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.xzy.pojo.Shop">
+    <constructor>
+      <arg column="shop_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_Name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="coupon" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.xzy.pojo.Shop">
+    insert into shop (shop_Id, shop_Name, coupon
+      )
+    values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{coupon,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzy.pojo.Shop">
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        shop_Id,
+      </if>
+      <if test="shopName != null">
+        shop_Name,
+      </if>
+      <if test="coupon != null">
+        coupon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        #{coupon,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <insert id="addShop" parameterType="string">
+    insert into shop
+    (shop_Id, shop_Name, coupon)
+    values
+    (default ,#{shopName},0)
+  </insert>
+  <select id="getShop" parameterType="integer" resultMap="BaseResultMap">
+    select
+    shop_Id, shop_Name, coupon
+    from shop
+    where shop_Id = #{shopId}
+  </select>
+
+  <select id="getShopPopular" parameterType="integer" resultType="int">
+    select count(1)
+    from love_shop
+    where shop_Id = #{shopId}
+  </select>
+  <select id="getShopGoodsNum" resultType="integer" parameterType="integer">
+    select goods_Id
+    from shopgoods_form
+    where shop_Id = #{shopId}
+  </select>
+  <insert id="loveShop" parameterType="map">
+    insert into love_shop
+    (user_Id, shop_Id) VALUES
+    (#{userId},#{shopId})
+  </insert>
+</mapper>

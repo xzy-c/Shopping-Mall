@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.CartMapper">
+  <resultMap id="BaseResultMap" type="com.xzy.pojo.Cart">
+    <constructor>
+      <arg column="cart_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_Id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.xzy.pojo.Cart">
+    insert into cart (cart_Id, user_Id)
+    values (#{cartId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzy.pojo.Cart">
+    insert into cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        cart_Id,
+      </if>
+      <if test="userId != null">
+        user_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartId != null">
+        #{cartId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="getCartId" parameterType="integer" resultType="integer">
+    select cart_Id
+    from cart
+    where user_Id = #{userId}
+  </select>
+
+  <insert id="addToCart" parameterType="map">
+    insert into
+    goods_rel (cart_Id, goods_Id, goods_Rel_Date, goods_Rel_Am)
+    values (#{cartId},#{goodsId},now(),#{num})
+  </insert>
+</mapper>

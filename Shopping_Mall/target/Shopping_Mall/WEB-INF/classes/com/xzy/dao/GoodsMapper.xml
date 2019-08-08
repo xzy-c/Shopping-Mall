@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzy.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.xzy.pojo.Goods">
+    <id column="goods_Id" property="goods_Id"/>
+    <result column="Small_Cate_ID" property="Small_Cate_ID" />
+    <result column="goods_Name" property="goods_Name" />
+    <result column="goods_Price" property="goods_Price"  />
+    <result column="goods_ComNumber" property="goods_ComNumber"/>
+    <result column="goods_Picture" property="goods_Picture" />
+    <result column="goods_Descr" property="goods_Descr"  />
+    <result column="goods_Stock" property="goods_Stock"  />
+    <result column="goods_Num" property="goods_Num"  />
+    <result column="shop_Id" property="shop_Id"  />
+  </resultMap>
+  <resultMap id="Small_CateResultMap" type="com.xzy.pojo.Small_Cate">
+    <id column="Small_Cate_ID" property="Small_Cate_ID"  />
+    <result column="Big_Cate_ID" property="Big_Cate_ID" />
+    <result column="Small_Cate_Name" property="Small_Cate_Name" />
+  </resultMap>
+
+
+  <select id="searchSmall_Cate" parameterType="int"  resultMap="Small_CateResultMap">
+        select * from small_cate where Big_Cate_ID=#{Big_Cate_ID};
+    </select>
+
+  <select id="searchGoods" parameterType="int"  resultMap="BaseResultMap">
+        select * from goods where Small_Cate_ID=#{Small_Cate_ID}
+    </select>
+  <insert id="insert" parameterType="com.xzy.pojo.Goods">
+    insert into goods (goods_Id, Small_Cate_ID, goods_Name, 
+      goods_Price, goods_ComNumber, goods_Picture, 
+      goods_Descr, goods_Stock, goods_Num, 
+      shop_Id)
+    values (#{goods_Id,jdbcType=INTEGER}, #{Small_Cate_ID,jdbcType=INTEGER}, #{goods_Name,jdbcType=VARCHAR},
+      #{goods_Price,jdbcType=REAL}, #{goods_ComNumber,jdbcType=INTEGER}, #{goods_Picture,jdbcType=VARCHAR},
+      #{goods_Descr,jdbcType=VARCHAR}, #{goods_Stock,jdbcType=INTEGER}, #{goods_Num,jdbcType=INTEGER},
+      #{shop_Id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzy.pojo.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        goods_Id,
+      </if>
+      <if test="smallCateId != null">
+        Small_Cate_ID,
+      </if>
+      <if test="goodsName != null">
+        goods_Name,
+      </if>
+      <if test="goodsPrice != null">
+        goods_Price,
+      </if>
+      <if test="goodsComnumber != null">
+        goods_ComNumber,
+      </if>
+      <if test="goodsPicture != null">
+        goods_Picture,
+      </if>
+      <if test="goodsDescr != null">
+        goods_Descr,
+      </if>
+      <if test="goodsStock != null">
+        goods_Stock,
+      </if>
+      <if test="goodsNum != null">
+        goods_Num,
+      </if>
+      <if test="shopId != null">
+        shop_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="smallCateId != null">
+        #{smallCateId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=REAL},
+      </if>
+      <if test="goodsComnumber != null">
+        #{goodsComnumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPicture != null">
+        #{goodsPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescr != null">
+        #{goodsDescr,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsStock != null">
+        #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNum != null">
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="getGoods" parameterType="integer" resultMap="BaseResultMap">
+    select goods_Id, Small_Cate_ID, goods_Name,
+      goods_Price, goods_ComNumber, goods_Picture,
+      goods_Descr, goods_Stock, goods_Num,
+      shop_Id
+    from goods
+    where goods_Id = #{goodId}
+  </select>
+
+  <select id="getLoveGoodsNum" parameterType="integer" resultType="int">
+    select count(1)
+    from love_goods
+    where goods_Id = #{goodId}
+  </select>
+
+
+  <insert id="loveGoods" parameterType="map">
+    insert into
+    love_goods (user_Id, goods_Id)
+    values (#{userId},#{goodId})
+  </insert>
+
+
+  <select id="ifGetCoupon" parameterType="map" resultType="int">
+      select count(1)
+      from coupon
+      where user_Id = #{userId}
+      and shop_Id = #{shopId}
+    </select>
+
+  <select id="getGoodsByShopId" resultType="list" resultMap="BaseResultMap" parameterType="integer">
+    select
+    goods_Id, Small_Cate_ID, goods_Name,
+      goods_Price, goods_ComNumber, goods_Picture,
+      goods_Descr, goods_Stock, goods_Num,
+      shop_Id
+     from goods
+     where shop_Id = #{shopId}
+  </select>
+</mapper>
